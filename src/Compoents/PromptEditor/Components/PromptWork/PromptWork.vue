@@ -455,8 +455,9 @@ export default Vue.extend({
             this.doImportByInputThrottle()
         }, 300)
         
-        // 从 localStorage 恢复输入内容
+        //qss更改 从 localStorage 恢复输入内容
         const savedInput = localStorage.getItem(`prompt-input-${this.promptWork.id}`)
+
         this.inputText = savedInput ?? this.promptWork.data.initText ?? ""
         this.doImportByInputThrottle()
     },
@@ -465,10 +466,11 @@ export default Vue.extend({
             this.promptWork.data.parser = val
             this.doImportByInputThrottle()
         },
+        // qss更改保存输入内容到 localStorage
         inputText(val) {
-            // 保存输入内容到 localStorage
             localStorage.setItem(`prompt-input-${this.promptWork.id}`, val)
         }
+        
     },
     methods: {
         doImportByInputThrottle() {},
