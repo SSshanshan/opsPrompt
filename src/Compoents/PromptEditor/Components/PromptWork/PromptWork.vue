@@ -454,7 +454,10 @@ export default Vue.extend({
         ;(<any>this).doAddInputDebounce = debounce(() => {
             this.doImportByInputThrottle()
         }, 300)
-        this.inputText = this.promptWork.data.initText ?? ""
+        
+        // 从 localStorage 恢复输入内容
+        const savedInput = localStorage.getItem(`prompt-input-${this.promptWork.id}`)
+        this.inputText = savedInput ?? this.promptWork.data.initText ?? ""
         this.doImportByInputThrottle()
     },
     watch: {
@@ -462,6 +465,10 @@ export default Vue.extend({
             this.promptWork.data.parser = val
             this.doImportByInputThrottle()
         },
+        inputText(val) {
+            // 保存输入内容到 localStorage
+            localStorage.setItem(`prompt-input-${this.promptWork.id}`, val)
+        }
     },
     methods: {
         doImportByInputThrottle() {},

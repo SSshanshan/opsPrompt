@@ -22,7 +22,8 @@ export async function stableDiffusionWebUIParse(text: string, options?: { zh2en?
 }
 
 function split(text: string) {
-    return text.split(/[,，\n]/).map((word) => word.trim())
+    //return text.split(/[,，\n]/).map((word) => word.trim())
+    return text.split(/[,，\n\.。]/).map((word) => word.trim())
 }
 
 /** 解析单个字符 */
