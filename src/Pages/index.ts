@@ -2,7 +2,6 @@ import VueRouter from "vue-router"
 import vIndex from "../Pages/Index/Index.vue"
 import type { VueConstructor } from "vue"
 
-
 export function getRoutes() {
     return [
         {
